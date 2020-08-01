@@ -1,0 +1,108 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="logn.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='login.css')}}">
+</head>
+
+<body >
+  <section class="main">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+       <div class="test">
+
+
+                
+      
+      <div class="signin">
+
+        
+
+        <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+
+          <legend class="border-bottom mb-4"> <h2 style="color:#DAA520; font-size:31px;">Log In</h2></legend>
+        
+                <div class="form-group" style='color:black'><h3><b>
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}</b></h3>
+                </div>
+                <div class="form-group" style='color:black'><h3><b>
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}</b></h3>
+                </div>
+              <!--   <div class="form-check " style='color:black'><h3><b>
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}</b></h3>
+                </div> -->
+            </fieldset>
+            <div class="form-group"style='color:black'><h3><b>
+                {{ form.submit(class="btn btn-outline-info") }}</b></h3>
+            </div>
+            
+            <!-- <small class="text-muted ml-2" style='color:black'><h3><b>
+                <a href="#">Forgot Password?</a></b></h3>
+            </small> -->
+        </form>
+    </div>
+
+
+
+      </div>
+      <div><br><br> 
+        
+            Need An Account? <a class="ml-2" href="{{ url_for('signup') }}" style="color:yellow;">Register Now</a>
+        
+    </div>
+ 
+      
+
+    </div>
+
+    
+  </section>
+
+
+</body>
+
+</html>
